@@ -1,0 +1,5 @@
+KERNEL=="event*", SUBSYSTEM=="input", GROUP="input", MODE="0660"
+KERNEL=="mice", SUBSYSTEM=="input", GROUP="input", MODE="0660"
+KERNEL=="mouse*", SUBSYSTEM=="input", GROUP="input", MODE="0660"
+KERNEL=="js*", SUBSYSTEM=="input", GROUP="input", MODE="0660"
+KERNEL=="uinput", GROUP="input", MODE="0660"

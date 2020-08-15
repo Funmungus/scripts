@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 if [[ $# -lt 1 ]]; then
 	printf "1d20 = %d\n" $((RANDOM % 20 + 1))

@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 stats=(STR DEX CON INT WIS CHA)
 

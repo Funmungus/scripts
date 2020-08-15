@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 bdir=$(dirname "$0")
 npcTraits=(abilities.txt abilities.txt appearances.txt talents.txt mannerisms.txt interactions.txt good_evil.txt law_chaos.txt neutral_other.txt bonds.txt flaws.txt)
