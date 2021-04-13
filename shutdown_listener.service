@@ -1,0 +1,14 @@
+[Unit]
+Description=GPIO shutdown button
+After=network.target pigpiod.service
+
+[Service]
+Type=simple
+Restart=always
+RestartSec=1
+User=root
+ExecStartPre=/usr/local/bin/pigpiod
+ExecStart=/usr/bin/python3 /usr/local/bin/shutdown_listener.py
+
+[Install]
+WantedBy=multi-user.target

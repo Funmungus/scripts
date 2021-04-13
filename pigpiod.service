@@ -1,0 +1,16 @@
+[Unit]
+Description=Pigpio daemon
+After=network.target syslog.target
+StartLimitIntervalSec=60
+StartLimitBurst=5
+StartLimitAction=reboot
+
+[Service]
+Type=simple
+ExecStart=/usr/local/bin/pigpiod -g
+ExecStop=
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target
