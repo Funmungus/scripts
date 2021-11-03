@@ -1,8 +1,8 @@
-from ctypes import *
-from enum import *
+from ctypes import CDLL, c_int, c_void_p, c_longlong, c_bool, POINTER, byref
+import enum
 import time
 
-class Dimension(IntEnum):
+class Dimension(enum.IntEnum):
     X = 0
     Y = 1
     Z = 2
@@ -16,10 +16,10 @@ class Dimension(IntEnum):
     MAX = Z
     COUNT = MAX + 1
 
-class Key(Structure):
+class Key(enum.Structure):
     _fields_ = [("key", c_int), ("apply", c_int)]
 
-class MoveCursor(Structure):
+class MoveCursor(enum.Structure):
     _fields_ = [("position", c_longlong * Dimension.COUNT.value), ("justify_flag", c_bool)]
 
 libmacro = CDLL("./libmacro.so")
