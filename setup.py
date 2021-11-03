@@ -1,6 +1,4 @@
-import os
 import subprocess
-import sys
 import scripts
 import platform
 

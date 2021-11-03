@@ -40,7 +40,6 @@ def match_all(image, template, threshold=0.8):
     for x, y in zip(*match_locations[::-1]):
         rectangles.append([int(x), int(y), int(width), int(height)])
     rectangles, _ = cv2.groupRectangles(rectangles, 1, 0.2)
-
     return rectangles
 
 def match_best(image, template, threshold=0.8):
@@ -53,14 +52,14 @@ def match_best(image, template, threshold=0.8):
         return None
     return *max_point, width, height
 
-def find_image(imagefile, threshold=0.8):
+def screen_find(imagefile, threshold=0.8):
     img = cv2.imread(imagefile)
     if img is None:
         return None
     scrn = screen()
     return match_best(scrn, img, threshold)
 
-def moveto(rect):
+def goto_rect(rect):
     if rect:
         x, y, w, h = rect
         mouse.move(-9999, -9999)
@@ -69,10 +68,10 @@ def moveto(rect):
         # mouse.move(int(x + w / 2), int(y + h / 2))
 
 def click_image(imagefile, threshold=0.8, delay=0.1):
-    rect = find_image(imagefile, threshold)
+    rect = screen_find(imagefile, threshold)
     if not rect:
         return False
-    moveto(rect)
+    goto_rect(rect)
     sleep(0.1)
     mouse.press(pynput.mouse.Button.left)
     sleep(delay)
@@ -84,8 +83,8 @@ def main():
     # img = cv2.imread("D:/src/Screenshot 2021-11-02 230428.png")
     # scrn = screen()
     # print(match_all(scrn, img))
-    # rect = find_image("D:/src/Screenshot.png")
-    # moveto(rect)
+    # rect = screen_find("D:/src/Screenshot.png")
+    # goto_rect(rect)
     # cv2.rectangle(scrn, best, (best[0] + webaccept.shape[1], best[1] + webaccept.shape[0]), (0,255,255), 2)
     # cv2.imshow('resize', reduce(scrn))
     # cv2.waitKey(0)
@@ -93,4 +92,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
