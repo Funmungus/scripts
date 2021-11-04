@@ -28,7 +28,7 @@ def reduce(image, mult=0.5):
 def screen():
     prtscr = ImageGrab.grab()
     img_np = np.array(prtscr)
-    return cv2.cvtColor(imp_np, cv2.COLOR_BGR2RGB)
+    return cv2.cvtColor(img_np, cv2.COLOR_BGR2RGB)
 
 def match_all(image, template, threshold=0.8):
     """ Match all template occurrences which have a higher likelihood than the threshold """
@@ -47,7 +47,6 @@ def match_best(image, template, threshold=0.8):
     h, w = template.shape[:2]
     match_probability = cv2.matchTemplate(image, template, cv2.TM_CCOEFF_NORMED)
     # return np.unravel_index(match_probability.argmax(), match_probability.shape)
-    # min_val, max_val, min_loc, max_loc = cv2.minMaxLoc(match_probability)
     _, max_val, _, max_point = cv2.minMaxLoc(match_probability)
     if max_val < threshold:
         return None
@@ -66,7 +65,6 @@ def goto_rect(rect):
         mouse.move(-9999, -9999)
         sleep(0.1)
         mouse.move(int(x + w / 2), int(y + h / 2))
-        # mouse.move(int(x + w / 2), int(y + h / 2))
 
 def click(delay=0.1):
     mouse.press(pynput.mouse.Button.left)
@@ -78,7 +76,7 @@ def click_image(imagefile, threshold=0.8, delay=0.1):
     if not rect:
         return False
     goto_rect(rect)
-    sleep(delay)
+    sleep(1 + delay * 3)
     click(delay=delay)
     return True
 
@@ -120,14 +118,14 @@ def show_win(name, exact=False):
 def main():
     pass
     # img = cv2.imread("D:/src/Screenshot 2021-11-02 230428.png")
-    # scrn = screen()
+    scrn = screen()
     # print(match_all(scrn, img))
     # rect = screen_find("D:/src/Screenshot.png")
     # goto_rect(rect)
     # cv2.rectangle(scrn, best, (best[0] + webaccept.shape[1], best[1] + webaccept.shape[0]), (0,255,255), 2)
-    # cv2.imshow('resize', reduce(scrn))
-    # cv2.waitKey(0)
-    # cv2.destroyAllWindows()
+    cv2.imshow('resize', reduce(scrn))
+    cv2.waitKey(0)
+    cv2.destroyAllWindows()
 
 if __name__ == "__main__":
     main()
