@@ -2,6 +2,7 @@ import os
 import platform
 import sys
 import subprocess
+from . import auto
 
 def find_python():
     python = os.path.dirname(sys.executable)

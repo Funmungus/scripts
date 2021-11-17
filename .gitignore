@@ -75,5 +75,9 @@ Thumbs.db
 *.user
 
 __pycache__
-.spyproject/config/workspace.ini
-.spyproject/config/backups/workspace.ini.bak
+workspace.ini
+workspace.ini.bak
+
+build/
+dist/
+newpsoft.egg-info

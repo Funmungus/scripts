@@ -1,6 +1,6 @@
 import glob
 import os
-import scripts
+import newpsoft
 import sys
 import subprocess
 import tkinter as tk
@@ -27,11 +27,11 @@ def reload():
     for i in buttons:
         i.destroy()
     for i in allpyfiles:
-        button = tk.Button(window, text=os.path.basename(i), command=scripts.Meeper(i).meep)
+        button = tk.Button(window, text=os.path.basename(i), command=newpsoft.Meeper(i).meep)
         button.pack(pady=4)
         buttons.append(button)
     for i in allpywfiles:
-        button = tk.Button(window, text=os.path.basename(i), command=scripts.Meeper(i).meep)
+        button = tk.Button(window, text=os.path.basename(i), command=newpsoft.Meeper(i).meep)
         button.pack(pady=4)
         buttons.append(button)
 

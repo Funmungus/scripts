@@ -6,6 +6,7 @@ from time import sleep
 from PIL import ImageGrab
 
 mouse = pynput.mouse.Controller()
+keyboard = pynput.mouse.Controller()
 
 WINMODE = platform.system().lower() == "windows"
 if WINMODE:

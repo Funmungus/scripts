@@ -1,7 +1,5 @@
-from setuptools import setup
-
-if __name__ == '__main__':
-    setup(install_requires=[
+[build-system]
+requires = [
     "setuptools>=42",
     "wheel",
     "ttkthemes",
@@ -9,5 +7,5 @@ if __name__ == '__main__':
     "Pillow",
     'evdev; sys_platform == "Linux"',
     'python-uinput; sys_platform == "Linux"'
-    ])
-
+]
+build-backend = "setuptools.build_meta"
