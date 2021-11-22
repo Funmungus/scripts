@@ -82,9 +82,13 @@ def click_image(imagefile, threshold=0.8, delay=0.1):
     return True
 
 def showit(winid):
-    if WINMODE:
-        win32gui.ShowWindow(winid, 5)
-        win32gui.SetForegroundWindow(winid)
+    try:
+        if WINMODE:
+            win32gui.ShowWindow(winid, 5)
+            sleep(0.2)
+            win32gui.SetForegroundWindow(winid)
+    finally:
+        pass
 
 def windowEnumerationHandler(hwnd, winlist):
     winlist.append((hwnd, win32gui.GetWindowText(hwnd)))
