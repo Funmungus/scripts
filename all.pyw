@@ -36,7 +36,10 @@ def reload():
         buttons.append(button)
 
 def main():
+    global fpath
     global window
+    if len(sys.argv) > 1:
+        fpath = sys.argv[1] if os.path.isdir(sys.argv[1]) else os.path.dirname(sys.argv[1])
     window = tk.Tk()
     window.title("Scripts")
     button = tk.Button(window, text="Reload", command=reload)
