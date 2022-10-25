@@ -23,8 +23,8 @@ def find_pythonw():
     return sys.executable
 
 if platform.system().lower() == "windows":
-    cmd_pre = ["start", "cmd.exe", "/c"]
-    cmd_post = ["^&", "pause"]
+    cmd_pre = ["start"]
+    cmd_post = []
 else:
     cmd_pre = ["xdg-open"]
     cmd_post = []

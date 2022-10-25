@@ -5,7 +5,7 @@ import sys
 import subprocess
 import tkinter as tk
 
-fpath = os.path.dirname(__file__)
+fpath = os.getcwd()
 allpyfiles = []
 allpywfiles = []
 window = False
@@ -38,17 +38,21 @@ def reload():
 def main():
     global fpath
     global window
-    if len(sys.argv) > 1:
-        fpath = sys.argv[1] if os.path.isdir(sys.argv[1]) else os.path.dirname(sys.argv[1])
+    for i in sys.argv[::-1]:
+        if os.path.isdir(i):
+            fpath = i
+            break
+    if not fpath:
+        fpath = os.getcwd()
     window = tk.Tk()
     window.title("Scripts")
     button = tk.Button(window, text="Reload", command=reload)
-    button.pack(pady=(16, 8))
+    button.pack(pady=(32, 32))
     reload()
     window.update_idletasks()
     sw, sh = window.winfo_screenwidth(), window.winfo_screenheight()
-    w, h = window.winfo_width() + 16, window.winfo_height() + 16
-    x, y = sw - w, sh - h - 100
+    w, h = window.winfo_width() + 32, window.winfo_height() + 32
+    x, y = sw - w, sh - h - 200
     window.geometry(f'{w}x{h}+{x}+{y}')
     window.mainloop()
 
