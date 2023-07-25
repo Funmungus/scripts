@@ -84,6 +84,7 @@ def click_image(imagefile, threshold=0.8, delay=0.1):
 def showit(winid):
     try:
         if WINMODE:
+            keyboard.tap(pynput.keyboard.Key.alt)
             win32gui.ShowWindow(winid, 5)
             sleep(0.2)
             win32gui.SetForegroundWindow(winid)
