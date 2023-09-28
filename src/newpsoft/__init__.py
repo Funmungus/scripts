@@ -22,23 +22,23 @@ def find_pythonw():
             return pyte
     return sys.executable
 
-if platform.system().lower() == "windows":
-    cmd_pre = ["start"]
-    cmd_post = []
-else:
-    cmd_pre = ["xdg-open"]
-    cmd_post = []
-
 class Meeper:
     python = None
     pythonw = None
-    def __init__(self, filename, executable=None):
+    def __init__(self, filename, executable=None, window=None):
         if not Meeper.python or not Meeper.pythonw:
             Meeper.python = find_python()
             Meeper.pythonw = find_pythonw()
         self.exe = executable if executable else Meeper.python if filename.endswith(".py") else Meeper.pythonw
         self.filename = filename
+        self.window = window
 
     def meep(self):
-        subprocess.call(cmd_pre + [self.exe, self.filename] + cmd_post, shell=True)
+        if self.window:
+            self.window.state("withdrawn")
+        subprocess.call([self.exe, self.filename])
+        # subprocess.call(cmd_pre + [self.exe, self.filename] + cmd_post, shell=True)
+
+        if self.window:
+            self.window.state("normal")
 
