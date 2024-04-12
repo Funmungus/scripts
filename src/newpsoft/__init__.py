@@ -35,10 +35,10 @@ class Meeper:
 
     def meep(self):
         if self.window:
-            self.window.state("withdrawn")
+            self.window.withdraw()
         subprocess.call([self.exe, self.filename])
         # subprocess.call(cmd_pre + [self.exe, self.filename] + cmd_post, shell=True)
 
         if self.window:
             self.window.state("normal")
-
+            self.window.lift()

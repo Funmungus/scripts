@@ -77,7 +77,7 @@ def click_image(imagefile, threshold=0.8, delay=0.1):
     if not rect:
         return False
     goto_rect(rect)
-    sleep(1 + delay * 3)
+    sleep(delay)
     click(delay=delay)
     return True
 
