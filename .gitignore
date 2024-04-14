@@ -81,3 +81,4 @@ workspace.ini.bak
 build/
 dist/
 newpsoft.egg-info
+.venv

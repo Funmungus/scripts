@@ -1,0 +1,7 @@
+pynput
+ttkthemes
+opencv-contrib-python
+Pillow
+jedi
+pytest
+poetry
